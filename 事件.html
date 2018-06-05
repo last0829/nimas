@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+    <button v-on:click="counter +=1">增加1</button>
+    <button v-on:click="add1(5)">显示</button>
+    <button v-on:click="add2(counter,event)">弹出counter当前值</button>
+    <button v-on:click="add3(counter)">X2</button>
+    <button v-on:keyup.enter="submit"></button>
+
+    <p>这个按钮被点击了{{counter}}次。</p>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                counter:0
+            },
+            methods:{
+                add1:function(add){
+                    this.counter+=add;
+                    alert(this.counter);
+                },
+                add2:function(add,event){
+                    this.counter+=add;
+                    alert(this.counter);
+                    if (event) {
+                        alert(event.target.tagName)
+                    }
+                },
+                add3:function(add){
+                    this.counter+=add;
+                    alert(this.counter);
+                }
+            },
+        })
+    </script>
+</body>
+</html>
