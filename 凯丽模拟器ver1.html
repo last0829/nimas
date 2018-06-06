@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <style>
+        html{width: 100%;text-align: center;}
+        body{width: 100%;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>强化{{counter}}</p>
+        <input type="button" value="强化" v-on:click="add1">
+        <p>{{dq}}连败</p>
+        <p>成功{{i}}次</p>
+        <p>失败{{fs}}次</p>
+        <p>成功率{{(i+1)/fs*100}}%</p>
+        <p>每次成功需平均失败{{fs/(i+1)}}次</p>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                counter:'',
+                fs:0,
+                cl:0,
+                i:0,
+                dq:0
+            },
+            methods:{
+                add1:function(add){
+                    var n1=Math.floor(Math.random()*100+1);
+                    if (n1<=18) {
+                        this.i++;
+                        this.counter="成功";
+                    }
+                    else
+                    {
+                        this.counter="失败";
+                        this.fs+=1;
+                        this.dq+=1;
+                    }
+                    if (this.counter=="成功") {
+                        this.dq=0;
+                    }
+
+                }
+            },
+        })
+    </script>
+</body>
+</html>
